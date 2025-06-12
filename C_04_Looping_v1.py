@@ -3,7 +3,7 @@
 MAX_TICKETS = 5
 tickets_sold = 0
 
-while tickets_sold <MAX_TICKETS:
+while tickets_sold < MAX_TICKETS:
     name = input("Name: ")
 
     # if name is exit code, break out of loop
