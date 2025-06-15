@@ -1,5 +1,5 @@
 # Functions go here
-def int_check():
+def int_check(question):
 
     while True:
 
@@ -7,7 +7,7 @@ def int_check():
 
         try:
 
-            response = int(input("Enter an integer"))
+            response = int(input("Age:"))
 
             if response < 13:
                 print(error)
@@ -48,12 +48,12 @@ def string_check(question, valid_answers=('yes', 'no'), num_letters=1):
             elif response == item[:num_letters]:
                 return item
 
-            print(f'Please choose an option from {valid_answers}')
+        print(f'Please choose an option from {valid_answers}')
 
 
 # Main Routine goes here
 
-#initialize variables / non-default options for string checker
+# initialize variables / non-default options for string checker
 payment_ans = ('cash', 'credit')
 
 # loop for testing purposes...
@@ -63,8 +63,8 @@ while True:
     # ask user for their name (and check it's not blank)
     name = not_blank("Name: ")
 
-    # ask for their age and check its between 12 and 120
-    age = int_check("Age: ")
+    # ask for their age and check it's between 12 and 120
+    age = int_check("age: ")
 
     # Output error message / success message
     if age < 12:
@@ -78,3 +78,5 @@ while True:
 
     # ask user for payment method (cash / credit / ca / cr)
     pay_method = string_check("Payment method: ", payment_ans, 2)
+    print(f"{name} has bought a ticket ({pay_method})")
+
