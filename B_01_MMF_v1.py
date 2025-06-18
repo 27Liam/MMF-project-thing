@@ -50,7 +50,42 @@ draw (their ticket is free).
     ''')
 
 
+def not_blank(question):
+    """Checks that a user response is not blank"""
+
+    while True:
+        response = input(question)
+
+        if response != "":
+            return response
+
+        print("Sorry, this can't be blank. Please try again. \n")
+
+
+def int_check(question):
+
+    while True:
+
+        error = "Please enter an integer that is 13 or more"
+
+        try:
+
+            response = int(input("Age:"))
+
+            if response < 13:
+                print(error)
+            else:
+                return response
+
+        except ValueError:
+            print(error)
+
 # Main routine goes here
+
+# Initialise ticket numbers
+MAX_TICKETS = 5
+tickets_sold = 0
+
 
 make_statement("Mini-Movie Fundraiser Program", "🍿")
 
@@ -61,4 +96,17 @@ if want_instructions == "yes":
     instructions()
 
 print()
-print("program continues...")
+while tickets_sold < MAX_TICKETS:
+    name = input("Name: ")
+
+    # if name is exit code, break out of loop
+    if name == "xxx":
+        break
+
+    tickets_sold += 1
+
+if tickets_sold == MAX_TICKETS:
+    print(f"You have sold all the tickets (ie: {MAX_TICKETS} tickets")
+else:
+    print(f"You have sold {tickets_sold} / {MAX_TICKETS} tickets.")
+
