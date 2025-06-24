@@ -25,7 +25,7 @@ def string_check(question, valid_answers=('yes', 'no'), num_letters=1):
             elif response == item[:num_letters]:
                 return item
 
-            print(f'Please choose an option from {valid_answers}')
+        print(f'Please choose an option from {valid_answers}')
 
 
 def instructions():
@@ -86,6 +86,8 @@ def int_check(question):
 MAX_TICKETS = 5
 tickets_sold = 0
 
+# initialize variables / non-default options for string checker
+payment_ans = ('cash', 'credit')
 
 make_statement("Mini-Movie Fundraiser Program", "🍿")
 
@@ -97,11 +99,29 @@ if want_instructions == "yes":
 
 print()
 while tickets_sold < MAX_TICKETS:
-    name = input("Name: ")
+    # ask user for their name (and check it's not blank)
+    print()
+    name = not_blank("Name: ")
 
     # if name is exit code, break out of loop
     if name == "xxx":
         break
+        # ask for their age and check it's between 12 and 120
+    age = int_check("age: ")
+
+    # Output error message / success message
+    if age < 12:
+        print(f"{name} is too young")
+        continue
+    elif age > 120:
+        print(f"{name} is too old")
+        continue
+    else:
+        pass
+
+    # ask user for payment method (cash / credit / ca / cr)
+    pay_method = string_check("Payment method: ", payment_ans, 2)
+    print(f"{name} has bought a ticket ({pay_method})")
 
     tickets_sold += 1
 
